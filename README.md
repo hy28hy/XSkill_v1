@@ -1,10 +1,10 @@
-# ExSkill: Continual Learning from Experience and Skills in Multimodal Agents
+# XSkill: Continual Learning from Experience and Skills in Multimodal Agents
 
 <p align="center">
   <a href="https://arxiv.org/abs/PLACEHOLDER">
     <img src="https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper">
   </a>
-  <a href="https://github.com/DjangoJungle/ExSkill">
+  <a href="https://github.com/DjangoJungle/XSkill">
     <img src="https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
   <a href="https://djangojungle.github.io/exskill_page">
@@ -13,20 +13,20 @@
 </p>
 
 <!-- TODO: Add framework overview figure here -->
-![ExSkill Framework Overview](assets/framework.png)
+![XSkill Framework Overview](assets/framework.png)
 
-Multimodal agents demonstrate impressive problem-solving capabilities but typically operate in isolated episodes without leveraging past experiences. **ExSkill** addresses this by combining two complementary forms of accumulated knowledge: task-level **Skills** (structured workflows and tool templates) and action-level **Experiences** (context-specific tactical insights), both automatically extracted from agent trajectories without any parametric training.
+Multimodal agents demonstrate impressive problem-solving capabilities but typically operate in isolated episodes without leveraging past experiences. **XSkill** addresses this by combining two complementary forms of accumulated knowledge: task-level **Skills** (structured workflows and tool templates) and action-level **Experiences** (context-specific tactical insights), both automatically extracted from agent trajectories without any parametric training.
 
-ExSkill operates in two phases. **Phase I (Accumulation)**: after each batch of rollouts, the agent distills structured skill documents and experience entries via visually-grounded trajectory summarization, cross-rollout critique, and hierarchical consolidation. **Phase II (Inference)**: for each test sample, the system decomposes the task, retrieves relevant knowledge from the memory bank, adapts it to the current visual context, and injects it into the system prompt.
+XSkill operates in two phases. **Phase I (Accumulation)**: after each batch of rollouts, the agent distills structured skill documents and experience entries via visually-grounded trajectory summarization, cross-rollout critique, and hierarchical consolidation. **Phase II (Inference)**: for each test sample, the system decomposes the task, retrieves relevant knowledge from the memory bank, adapts it to the current visual context, and injects it into the system prompt.
 
-Evaluated on diverse benchmarks (VisualToolBench, TIR-Bench, MMSearch-Plus, RealX-Bench, MMBrowseComp), ExSkill achieves considerable performance gains over strong baselines across different backbone models, with superior zero-shot cross-task transferability.
+Evaluated on diverse benchmarks (VisualToolBench, TIR-Bench, MMSearch-Plus, RealX-Bench, MMBrowseComp), XSkill achieves considerable performance gains over strong baselines across different backbone models, with superior zero-shot cross-task transferability.
 
 ---
 
 ## Repository Structure
 
 ```
-ExSkill/
+XSkill/
 ├── eval/
 │   ├── infer_api.py              # Main inference entry point
 │   ├── infer_api_utils.py        # Utility functions for inference pipeline
@@ -63,8 +63,8 @@ ExSkill/
 **Python 3.11** is recommended.
 
 ```bash
-git clone https://github.com/your-org/ExSkill.git
-cd ExSkill
+git clone https://github.com/XSkill-Agent/XSkill.git
+cd XSkill
 pip install -r requirements.txt
 ```
 
@@ -286,11 +286,11 @@ A dataset-level summary is written to `output/<run_name>/summary_k.json`.
 
 ## Citation
 
-If you use ExSkill in your research, please cite:
+If you use XSkill in your research, please cite:
 
 ```bibtex
 @inproceedings{exskill2026,
-  title     = {{ExSkill}: Continual Learning from Experience and Skills in Multimodal Agents},
+  title     = {{XSkill}: Continual Learning from Experience and Skills in Multimodal Agents},
   author    = {Author One and Author Two and Author Three},
   booktitle = {Conference Name},
   year      = {2026},
