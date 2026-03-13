@@ -1,7 +1,7 @@
 # XSkill: Continual Learning from Experience and Skills in Multimodal Agents
 
 <p align="center">
-  <a href="https://arxiv.org/abs/PLACEHOLDER">
+  <a href="https://arxiv.org/pdf/2603.12056">
     <img src="https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper">
   </a>
   <a href="https://github.com/DjangoJungle/XSkill">
