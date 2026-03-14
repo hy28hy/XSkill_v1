@@ -4,6 +4,9 @@
   <a href="https://arxiv.org/pdf/2603.12056">
     <img src="https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper">
   </a>
+  <a href="https://huggingface.co/papers/2603.12056">
+    <img src="https://img.shields.io/badge/HuggingFace-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="HuggingFace Daily">
+  </a>
   <a href="https://github.com/XSkill-Agent/XSkill">
     <img src="https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
