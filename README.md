@@ -1,7 +1,7 @@
-<p align="center">
-  <img src="assets/XSkill.png" alt="XSkill Logo" width="200">
-</p>
-# XSkill: Continual Learning from Experience and Skills in Multimodal Agents
+<div align="center">
+  <img src="assets/X-Agent.png" alt="XSkill Logo" width="200">
+  <h1 align="center">XSkill: Continual Learning from Experience and Skills<br>in Multimodal Agents</h1>
+</div>
 
 <p align="center">
   <a href="https://arxiv.org/pdf/2603.12056">
