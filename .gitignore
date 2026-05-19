@@ -8,3 +8,24 @@ __pycache__/
 *$py.class
 *.so
 .Python
+
+# Local ablation runs (per-run results, large)
+results_ablation_*/
+
+# Large datasets (track via ModelScope/HF, not git)
+benchmark/VisualToolBench/
+
+# Misc accidentally created files
+=3.11
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Local virtual envs / installs (just in case)
+.venv/
+venv/
+
+# Reference template (cloned from elsewhere, not part of this repo)
+scripts_local/No_ECON/

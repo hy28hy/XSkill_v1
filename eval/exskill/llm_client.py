@@ -36,7 +36,8 @@ class ExperienceLLM:
             temperature=t,
             top_p=top_p,
             primary_api_name="Primary Experience API",
-            fallback_api_name="Fallback Experience API"
+            fallback_api_name="Fallback Experience API",
+            require_chat_completions=True   # local fix: vLLM endpoint needs full /chat/completions path
         )
 
     def _try_single_experience_api(
@@ -219,7 +220,7 @@ class ExperienceLLM:
         return_placeholder_on_error: bool = False,
         primary_api_name: str = "Primary API",
         fallback_api_name: str = "Fallback API",
-        require_chat_completions: bool = False
+        require_chat_completions: bool = True
     ) -> str:
         """
         Call API with primary and fallback support, reusing retry logic.

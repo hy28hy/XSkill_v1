@@ -1,36 +1,42 @@
 # Tool configurations
-# Provides default configuration parameters for each tool
+# 与 run_exskill_inference.sh 配套，所有 endpoint 指向本地 vLLM (Qwen3.6-27B @ 8080)。
 
-# CodeInterpreter configuration
+# CodeInterpreter：本地代码执行沙盒（无需外部 API）
 code_interpreter:
   work_dir: "/tmp/code_interpreter"
   output_timeout: 30
 
-  
-# Zoom configuration
+
+# Zoom：本地图片裁剪/缩放工具（无需外部 API）
 zoom:
   work_dir: "/tmp/zoom"
   output_timeout: 30
 
 
-# WebSearch configuration
+# WebSearch：DuckDuckGo（已在 web_search.py 改为 ddgs 后端，无需 key）
 web_search:
   max_results: 10
-  timeout: 10
+  timeout: 30
+  region: "wt-wt"     # ddgs region；wt-wt 表示全球
+  safesearch: "off"
 
 
-# Visit configuration
+# Visit：网页内容抓取 + LLM 摘要
+# - JINA_API_KEY 走环境变量（在 run_exskill_inference.sh 设置）
+# - 摘要用本地 Qwen
 visit:
   max_content_length: 150000
   timeout: 120
-  api_key: ""
-  api_endpoint: ""
-  model_name: "" 
+  api_key: "EMPTY"
+  api_endpoint: "http://localhost:8080/v1/chat/completions"
+  model_name: "Qwen3.6-27B"
 
 
-# ImageSearch configuration
+# ImageSearch：Serper.dev (含反向图搜)
+# - SERPAPI_KEY 走环境变量
+# - 反向图搜上传图片用 ImgBB（IMGBB_API_KEY 走环境变量）
 image_search:
-  imgbb_api_key: ""
+  imgbb_api_key: ""           # 留空，让代码读 IMGBB_API_KEY 环境变量
   max_results: 5
   search_image_max_pixels: 1000000
   search_image_quality: 85

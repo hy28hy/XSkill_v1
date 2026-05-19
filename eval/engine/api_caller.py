@@ -101,6 +101,35 @@ def _make_api_request(end_point: str, headers: dict, payload: dict, api_name: st
     """
     try:
         response = requests.post(end_point, headers=headers, json=payload, timeout=API_TIMEOUT)
+        # DEBUG: dump bad-request payload for offline diagnosis
+        if response.status_code >= 400:
+            try:
+                import os as _os, json as _json, time as _time
+                dump_dir = _os.environ.get("XSKILL_DEBUG_DUMP_DIR", "/tmp/xskill_bad_payloads")
+                _os.makedirs(dump_dir, exist_ok=True)
+                ts = int(_time.time() * 1000)
+                fname = f"{dump_dir}/bad_{response.status_code}_{api_name.replace(' ', '_')}_{ts}.json"
+                # Truncate base64 image data to keep file readable
+                _safe = _json.loads(_json.dumps(payload, default=str))
+                for _m in _safe.get("messages", []):
+                    _c = _m.get("content")
+                    if isinstance(_c, list):
+                        for _p in _c:
+                            if isinstance(_p, dict):
+                                _u = _p.get("image_url")
+                                if isinstance(_u, dict) and isinstance(_u.get("url"), str) and len(_u["url"]) > 200:
+                                    _u["url"] = _u["url"][:200] + f"...[truncated {len(_u['url'])} chars]"
+                with open(fname, "w") as _f:
+                    _json.dump({
+                        "endpoint": end_point,
+                        "status_code": response.status_code,
+                        "response_text": response.text[:2000],
+                        "response_headers": dict(response.headers),
+                        "request_payload": _safe,
+                    }, _f, indent=2, ensure_ascii=False, default=str)
+                print(f"[{api_name}] DEBUG: dumped bad payload to {fname}")
+            except Exception as _e:
+                print(f"[{api_name}] DEBUG: failed to dump payload: {_e}")
         if response.status_code == 429:
             return response, "429"
         return response, None
